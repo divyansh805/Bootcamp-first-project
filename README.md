@@ -1,89 +1,334 @@
-# JSS Academy of Technical Education Noida Companies Research & Placement Analytics Portal
+# 🏛️ JSSATEN Placement Intelligence Hub
+### Research & Placement Analytics Portal
 
-> a.k.a. **JSSATEN Placement Intelligence Hub**
+**Research Beyond Recruitment. Prepare Beyond Expectations.**
 
-A mobile-first enterprise React + Vite + TypeScript + Tailwind CSS application providing in-depth placement analytics, 22-section company dossiers, and 12-domain technical competency preparation ladders for students of **JSS Academy of Technical Education Noida** (`JSSATEN`).
+A mobile-first, enterprise-grade placement intelligence platform built for students of **JSS Academy of Technical Education Noida (JSSATEN)**.
 
----
+The JSSATEN Placement Intelligence Hub transforms traditional placement preparation into a structured research and technical readiness experience. It provides students with comprehensive company intelligence, industry insights, organizational research, and structured technical competency roadmaps — all through a unified, publicly accessible portal.
 
-## Key Architecture & Design Highlights
+Rather than limiting placement preparation to company names and basic recruitment information, the platform enables students to understand organizations, explore their technology ecosystems, evaluate workplace environments, and prepare strategically for technical interviews.
 
-### 1. Supabase Database Integration (Phase 2 Connected)
-- **Live Supabase Client**: `src/lib/supabase.ts` uses `@supabase/supabase-js` configured via `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`.
-- **Verified Tables Connected**:
-  - `public.companies` &mdash; 100+ recruiting partners fetched with live search and category tier filtering.
-  - `public.company_logo` &mdash; Official high-resolution company logos.
-  - `public.company_brand_reputation` & `public.company_awards_recognitions` &mdash; Sentiment ratings, glassdoor/google scores, and global honors.
-  - `public.company_business`, `public.company_competitive_advantages`, `public.company_core_value_proposition` &mdash; Market share, TAM/SAM/SOM, and moat metrics.
-  - `public.company_compensation` &mdash; Fixed vs variable pay and bonus structures (strictly zero CTC/stipends).
-  - `public.company_culture` &mdash; Retention tenure, turnover benchmarks, psychological safety, and burnout risk.
-  - `public.company_logistics`, `public.company_area_safety`, `public.company_cab_policy` &mdash; Transit commute, cab policies, and campus security.
-  - `public.company_technologies`, `public.company_tech_stack`, `public.company_cybersecurity_posture` &mdash; Tech stack platforms, GenAI adoption, and security standards.
-  - `public.company_skill_levels` & `public.proficiency_levels` &mdash; 12 evaluated skill domains mapped to Bloom's taxonomy.
-  - `public.company_recent_news`, `public.company_core_values`, `public.company_customer_testimonials` &mdash; Case studies and strategic moves.
-
-### 2. Fully Public Portal (Zero Login / Auth)
-- **No Protected Routes**: The portal is openly accessible to all students, faculty, and recruiters.
-- **No Auth Artifacts**: There are no `/login` routes, no `AuthContext`, no protected routes, and no authentication UI or credentials needed.
-
-### 3. Institutional Identity & Anti-Slop Constraints
-- **College Name**: `JSS Academy of Technical Education Noida` (`JSSATEN`).
-- **No College Logo Image**: The portal strictly adheres to the constraint prohibiting college image files in `public/` or `<img>` tags. Institutional branding is rendered purely via clean typographic wordmarks and a `JSSATEN · INTELLIGENCE PLATFORM` text pill.
-- **Strict Prohibition on CTC / Stipend / Selection Ratio**: As requested by the institutional guidelines, CTC figures, stipend amounts, and candidate selection ratios are completely excluded across the entire application and data schema.
-
-### 4. 22 Comprehensive Intelligence Sections
-In `CompanyIntelligence` (`/company/intelligence`), each company provides a 22-section dossier with a sticky top bar and auto-centering scroll-spy:
-1. Company Identity
-2. Overview & Vision
-3. Leadership
-4. Funding & Financials
-5. Global Presence
-6. Products & Services
-7. Technology Stack
-8. Partnerships & Ecosystem
-9. Competitive Landscape
-10. Market Opportunity
-11. Core Value Proposition & ESG
-12. Culture & Work Life
-13. Recent News & Milestones
-14. Sales & Customer Metrics
-15. Risk & Compliance
-16. Work Location & Commute
-17. Safety & Wellbeing
-18. Career Growth & Learning
-19. Brand & Reputation
-20. Compensation & Benefits (Health, retirement, leave, family support; no CTC/stipends)
-21. Digital Presence & Ratings
-22. Contact Information
-
-### 5. Skill Intelligence & 10-Stage Milestone Roadmaps
-In `SkillIntelligence` (`/company/skills`):
-- **Bloom's Cognitive Taxonomy**: CU (Cognitive Understanding, #3b82f6), AP (Application, #22c55e), AS (Analysis, #eab308), EV (Evaluation, #ef4444), and CR (Creation, #a855f7).
-- **Criticality Classification**: Critical (≥7), Important (5–6), and Baseline (1–4).
-- **10-Level Curricula**: Each of the 12 technical domains contains a 10-level topic roadmap in `src/data/skillTopics.ts`, visually indicating target interview milestones and locking topics beyond the required recruitment scope.
+**One platform. Deeper research. Smarter preparation.**
 
 ---
 
-## Routing Structure
+## ✨ Core Features
+
+### 1. 🔍 Intelligent Company Discovery
+
+Explore 100+ recruiting organizations through a centralized company discovery interface.
+
+- Live company data fetched from Supabase.
+- Dynamic search and filtering.
+- Category and recruitment-tier classification.
+- Official high-resolution company logos.
+- Dedicated company intelligence profiles.
+- Mobile-first, responsive browsing experience.
+
+### 2. 🏢 22-Section Company Intelligence Dossiers
+
+Every company profile provides an extensive research-oriented dossier covering 22 dimensions of organizational intelligence.
+
+| # | Intelligence Section | Coverage |
+|---|---|---|
+| 01 | Company Identity | Company profile and identity |
+| 02 | Overview & Vision | Mission, vision and business overview |
+| 03 | Leadership | Leadership and management |
+| 04 | Funding & Financials | Financial background and funding |
+| 05 | Global Presence | International operations |
+| 06 | Products & Services | Core offerings and solutions |
+| 07 | Technology Stack | Technologies and platforms |
+| 08 | Partnerships & Ecosystem | Strategic alliances |
+| 09 | Competitive Landscape | Industry competitors |
+| 10 | Market Opportunity | TAM, SAM and SOM |
+| 11 | Value Proposition & ESG | Competitive advantages and sustainability |
+| 12 | Culture & Work Life | Workplace environment and employee wellbeing |
+| 13 | News & Milestones | Recent developments and achievements |
+| 14 | Sales & Customer Metrics | Business and customer insights |
+| 15 | Risk & Compliance | Cybersecurity, governance and compliance |
+| 16 | Work Location & Commute | Office locations and transit information |
+| 17 | Safety & Wellbeing | Workplace safety and employee support |
+| 18 | Career Growth & Learning | Learning and professional development |
+| 19 | Brand & Reputation | Employer reputation and sentiment |
+| 20 | Compensation & Benefits | Healthcare, retirement, leave and family benefits |
+| 21 | Digital Presence & Ratings | Online presence and ratings |
+| 22 | Contact Information | Official communication channels |
+
+**Navigation Experience:**
+- Sticky intelligence navigation bar.
+- Automatically centering scroll-spy.
+- Structured, section-wise company research.
+- Smooth navigation across extensive company dossiers.
+
+### 3. 🧠 Skill Intelligence & Technical Preparation
+
+A dedicated technical competency preparation system designed around 12 technical domains.
+
+**Bloom's Cognitive Taxonomy Integration**
+
+The platform organizes learning and competency evaluation across five cognitive stages:
+
+| Level | Cognitive Stage | Color |
+|---|---|---|
+| CU | Cognitive Understanding | Blue |
+| AP | Application | Green |
+| AS | Analysis | Yellow |
+| EV | Evaluation | Red |
+| CR | Creation | Purple |
+
+**Criticality Classification**
+
+Technical competencies are classified according to their evaluated importance:
+
+- Critical: Score ≥ 7
+- Important: Score 5–6
+- Baseline: Score 1–4
+
+**10-Stage Technical Roadmaps**
+
+- 12 technical competency domains.
+- 10 progressive learning levels per domain.
+- Structured topic-wise preparation.
+- Interview milestone indicators.
+- Recruitment-scope-based topic progression.
+- Visual distinction between required and locked topics.
+
+The goal is to help students understand not only what to learn, but also how deeply they should prepare.
+
+---
+
+## 🗄️ Database Architecture — Supabase Integration
+
+The application uses a live Supabase backend powered by `@supabase/supabase-js`.
+
+### Connected Database Tables
+
+The platform integrates structured company intelligence across multiple database categories:
+
+| Database Category | Tables |
+|---|---|
+| Company Information | `companies`, `company_logo` |
+| Brand Intelligence | `company_brand_reputation`, `company_awards_recognitions` |
+| Business Research | `company_business`, `company_competitive_advantages`, `company_core_value_proposition` |
+| Compensation | `company_compensation` |
+| Workplace Culture | `company_culture` |
+| Logistics & Safety | `company_logistics`, `company_area_safety`, `company_cab_policy` |
+| Technology & Security | `company_technologies`, `company_tech_stack`, `company_cybersecurity_posture` |
+| Skill Intelligence | `company_skill_levels`, `proficiency_levels` |
+| Research & Insights | `company_recent_news`, `company_core_values`, `company_customer_testimonials` |
+
+### Backend Configuration
+
+Supabase credentials are configured through environment variables:
+
+```env
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
 ```
-/                           -> Index (Company Search, Category Filters, Cards)
-/company/intelligence       -> CompanyIntelligence (22 Sections with Scroll-Spy)
-/company/skills             -> SkillIntelligence (Bloom Taxonomy & 10-Level Ladders)
-/company                    -> Redirects to /company/intelligence
-*                           -> 404 NotFound
+
+The Supabase client is initialized in:
+
+```text
+src/lib/supabase.ts
+```
+
+**Security Note:** Never commit private service-role keys, database passwords, or other privileged credentials to a public repository. Configure environment variables locally and through your deployment platform.
+
+---
+
+## 🏛️ Institutional Identity & Design Philosophy
+
+The platform follows a consistent institutional design approach.
+
+- **Institution:** JSS Academy of Technical Education Noida.
+- **Platform Identity:** JSSATEN · INTELLIGENCE PLATFORM.
+- Typography-driven institutional branding.
+- No college logo image assets or image-based institutional branding.
+- Clean, structured and professional interface.
+- Mobile-first responsive architecture.
+- Research-focused information hierarchy.
+
+### Institutional Data Restrictions
+
+The application strictly excludes:
+
+- CTC figures.
+- Stipend amounts.
+- Candidate selection ratios.
+
+These restrictions are maintained throughout the application and its data schema in accordance with the specified institutional guidelines.
+
+---
+
+## 🧭 Application Routes
+
+| Route | Functionality |
+|---|---|
+| `/` | Company discovery, search and category filters |
+| `/company/intelligence` | 22-section company intelligence dossiers |
+| `/company/skills` | Technical competency and learning roadmaps |
+| `/company` | Redirects to company intelligence |
+| `*` | Custom 404 Not Found page |
+
+---
+
+## 🛠️ Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| React | Component-based frontend architecture |
+| Vite | Development server and build tooling |
+| TypeScript | Type-safe application development |
+| Tailwind CSS | Responsive styling and UI design |
+| Supabase | Database and live data integration |
+| Lucide React | Modern icon system |
+| React Router | Client-side application routing |
+| Vitest | Automated testing |
+
+---
+
+## 📂 Project Structure
+
+```text
+project-root/
+│
+├── public/
+│
+├── src/
+│   ├── components/
+│   ├── pages/
+│   │   ├── Index
+│   │   ├── CompanyIntelligence
+│   │   ├── SkillIntelligence
+│   │   └── NotFound
+│   │
+│   ├── data/
+│   │   └── skillTopics.ts
+│   │
+│   ├── lib/
+│   │   └── supabase.ts
+│   │
+│   └── ...
+│
+├── .env
+├── .env.example
+├── package.json
+└── README.md
 ```
 
 ---
 
-## Running and Testing
+## ⚙️ Getting Started
+
+Follow these steps to run the project locally.
+
+### Prerequisites
+
+- Node.js (LTS recommended)
+- npm
+- Git
+- Supabase project credentials
+
+### 1. Clone the Repository
 
 ```bash
-# Start Development Server (Port 3000)
+git clone <YOUR_REPOSITORY_URL>
+```
+
+### 2. Navigate to the Project
+
+```bash
+cd <PROJECT_FOLDER_NAME>
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Configure Environment Variables
+
+Create a `.env` file in the project root:
+
+```env
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
+```
+
+Replace the placeholders with your actual Supabase project configuration.
+
+### 5. Start the Development Server
+
+```bash
 npm run dev
+```
 
-# Run Vitest Suite
+Open the application at:
+
+```text
+http://localhost:3000
+```
+
+### 6. Run Tests
+
+```bash
 npm run test
+```
 
-# Compile / Typecheck
+### 7. Build the Production Application
+
+```bash
 npm run build
 ```
+
+---
+
+## 🔓 Public Access — No Authentication Required
+
+The portal follows a completely open-access architecture.
+
+- No login or signup required.
+- No authentication screens.
+- No protected routes.
+- No user credentials required.
+- Company intelligence and skill preparation are publicly accessible.
+
+This approach ensures that students, faculty members and recruiters can explore the platform without unnecessary access barriers.
+
+---
+
+## 🚀 Project Highlights
+
+| Metric | Platform Capability |
+|---|---|
+| 100+ | Recruiting partner companies |
+| 22 | Company intelligence sections |
+| 12 | Technical competency domains |
+| 10 | Learning and milestone levels per domain |
+| 5 | Bloom's cognitive stages |
+| 0 | Login barriers |
+| 0 | CTC, stipend and selection-ratio disclosures |
+
+---
+
+## 🔮 Project Vision
+
+The JSSATEN Placement Intelligence Hub aims to make placement preparation more informed, structured and research-driven.
+
+Students should not have to depend only on scattered information, generic preparation resources, or incomplete company profiles.
+
+By combining organizational intelligence with structured technical preparation, the platform creates a centralized environment where students can research potential employers, understand industry expectations and prepare with greater clarity.
+
+**Research the company. Understand the industry. Master the skills. Prepare with intelligence.**
+
+---
+
+## ❤️ Built for JSSATEN
+
+Developed with a vision to make placement research and technical preparation more accessible to the JSSATEN student community.
+
+**JSSATEN Placement Intelligence Hub**
+
+*Beyond Placement Information. Towards Placement Intelligence.*
